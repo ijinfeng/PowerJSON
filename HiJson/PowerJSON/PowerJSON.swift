@@ -11,7 +11,7 @@ import Foundation
 /// https://github.com/alibaba/HandyJSON
 /// 通过指针操作来实现swift中的model赋值
 
-protocol PowerJSON: JSONSerialize, PowerWapped, TransferConfiguration {
+protocol PowerJSON: TransferMix, WappedUserConfiguration {
     
     mutating func wapped(from json: JSON) -> Self
     

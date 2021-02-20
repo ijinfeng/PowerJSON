@@ -11,11 +11,9 @@ import Foundation
 extension PowerJSON {
     @discardableResult mutating func wapped(from json: JSON) -> Self {
         let jsonObject = Self.jsonObject(from: json)
-        print("jsonObject=\(String(describing: jsonObject))")
         if jsonObject is [String: Any] {
             let jsonDic = jsonObject as! [String: Any]
-//            let wappedObject = WappedObject(object: &self)
-            let wappedObject = self.toWappedObject()
+            var wappedObject = self.toWappedObject()
             let customWappedKeys = self.customWappedKeys() ?? [:]
             for property in wappedObject.propertys {
                 var propertyName = property.name
@@ -23,12 +21,13 @@ extension PowerJSON {
                     propertyName = wappedKey
                 }
                 if let jsonValue = jsonDic[propertyName] {
-                    print("propertyName=\(propertyName), value=\(jsonValue)")
-                    PowerPointerHelp<Any>.bindMemory(headPointer: wappedObject.headPointer, type: property.objectType, offset: property.offset, value: jsonValue)
+                    print("will wapped name=\(propertyName), value=\(jsonValue)")
+                    self.willWapped(key: propertyName, value: jsonValue)
+                    self.write(value: jsonValue, object: &wappedObject, to: property)
                 }
             }
         } else if jsonObject is [Any] {
-            let jsonArray = jsonObject as! [Any]
+            
             
         }
         return self

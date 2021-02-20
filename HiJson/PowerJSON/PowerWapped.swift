@@ -8,23 +8,42 @@
 
 import Foundation
 
-protocol PowerWapped: MetaData {}
+protocol PowerWapped: PowerPointer {}
 
 extension PowerWapped {
     mutating func toWappedObject() -> WappedObject {
         let mirror = Mirror(reflecting: self)
         let displayStyle = WappedMirror.transferDisplayStyle(from: mirror.displayStyle)
         let objectType = mirror.subjectType
-        print("style=\(displayStyle),type=\(objectType)")
-        let headPointer = PowerPointerHelp.headPointer(object: &self)
-        var offset = self.metaDataSize(displayStyle: displayStyle)
+        let headPointer = self.headerPointer()
+        let offset = self.metaDataSize()
         var propertys = [WappedProperty]()
         for child in mirror.children {
-            var property = WappedProperty(child: child)
+            let property = WappedProperty(child: child)
+//            property.offset = offset
             propertys.append(property)
-            property.offset = offset
-            offset += property.stride
         }
-        return WappedObject(propertys: propertys, displayStyle: displayStyle, objectType: objectType, headPointer: headPointer)
+        return WappedObject(propertys: propertys, displayStyle: displayStyle, objectType: objectType, headPointer: headPointer, propertyOffset: offset)
+    }
+    
+    func write(value: Any, object: inout WappedObject, to property: WappedProperty) {
+        print("-----will transfer type=\(property.objectType)-----")
+        if let transferType = property.objectType as? TypeTransfer.Type {
+            print("-----transfer success with type=\(transferType)-----")
+            let headerPointer = object.headPointer.advanced(by: object.propertyOffset)
+            let rawPointer = UnsafeMutableRawPointer(headerPointer)
+            let offset = transferType.transfer(from: transferType, anyValue: value, headerRawPointer: rawPointer)
+            print("-----end transfer type return offset=\(offset)")
+            object.propertyOffset += offset
+        }
+    }
+    
+    mutating func objectDescription() {
+        let object = self.toWappedObject()
+        print("\n----->object<class:\(Self.self)>")
+        for property in object.propertys {
+            print("\t\(property.name) - \(property.value)")
+        }
+        print("----->print end\n")
     }
 }

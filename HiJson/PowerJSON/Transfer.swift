@@ -8,26 +8,5 @@
 
 import Foundation
 
-protocol TransferConfiguration {}
+typealias TransferMix = JSONSerialize & PowerWapped
 
-extension TransferConfiguration {
-    
-    /// 自定义key映射 ["targetKey": "oldKey"]
-    /// like: ["identifier": "id"]
-    func customWappedKeys() -> [String: String]? {
-        return [:]
-    }
-    
-    /// 要忽略映射的keys
-    func ignoreWappedKeys() -> [String]? {
-        return []
-    }
-    
-    /// 将要映射的key-value
-    /// - Parameters:
-    ///   - key: key
-    ///   - value: value
-    func willWapped(key: String, value: Any?) {
-        
-    }
-}

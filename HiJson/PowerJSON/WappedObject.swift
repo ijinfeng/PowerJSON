@@ -13,5 +13,6 @@ struct WappedObject {
     var displayStyle: WappedMirror.DisplayStyle
     var objectType: Any.Type
     var headPointer: UnsafeMutablePointer<Byte>
+    var propertyOffset: Int
 }
 

@@ -13,20 +13,28 @@ class JsonModel: PowerJSON  {
     
     var name: String = "default"
     var title: String?
-    var age = 10
+    var age: UInt16 = 10
     var version: Int?
     var array: [String] = ["1"]
     var dic: Dictionary<String, Any>?
     
-    func customLog() {
-        print(">---------->")
-        print("name=\(name)\ntitle=\(title ?? "nil")\nage=\(age)\nversion=\(version)\narray=\(array)\ndic=\(dic)")
-        print("<----------<")
-    }
-    
+//    func willWapped(key: String, value: Any?) {
+//        print("wapped key=\(key),value=\(value)")
+//    }
 }
 
-enum JsonEnum {
+class SingleModel: PowerJSON {
+        var age: Int16 = 0
+    var name: String = "default"
+    var title: String?
+    var age1: UInt32 = 0
+    var version: String?
+    var f1: Float32 = 1.0
+    var sub: String = "defalut"
+    var dic: String? = "default"
+}
+
+enum JsonEnum: PowerJSON {
     case dong
     case xi
 }
@@ -44,106 +52,94 @@ struct JsonStruct: HandyJSON {
     var j = CGSize(width: 10, height: 20)
 }
 
+class OCObjectClass: NSObject, PowerJSON {
+    
+}
+
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         
         let jsonValue = """
 {
 "name": "jinfeng",
 "title": "我是标题",
-"age": 101,
+"age": 111,
 "version": "11",
 "dic": {"key": "-.-"},
+"sub": "sub_string",
+"age1": 189,
+"f1": 19.99
 }
 """
-        print(jsonValue)
+        
+//        let jsonDic: [String : Any] = ["a": 123, "b":"123", "c":3, "g":999]
+        
+//        print(jsonValue)
         
 //////////////////////// 当前的问题 ///////////////
 /// 1. property获取到的并不是对象本身的属性（指针），因此不能直接赋值
         
-/// 2. OC 中不能被直接绑定的类型 //////////////////////
-// NSString , NSArray, NSDictory
+/// 2. OC 中不能被直接绑定的类型： NSString , NSArray, NSDictory
+        
+/// 3. Any 类型获取到的Stride为32，与实际类型不匹配
+
         
 //////////////////////////////////////////////////////////////////////////////
         
-        
-        var s1: Any.Type = String.Type.self
-        s1 = String.Type.self
-
-        
-        var model = JsonModel()
+        var model = SingleModel()
         model.wapped(from: jsonValue)
         
-        model.customLog()
+        model.objectDescription()
+        
+
+//        print(MemoryLayout.stride(ofValue: model.name))
+//        print(MemoryLayout.stride(ofValue: model.title))
+//        print(MemoryLayout<String?>.stride)
+//        print(MemoryLayout<String>.stride)
+//        print(MemoryLayout.stride(ofValue: anyString))
         
         
-        print("======================== test =======================")
-        
-        print("size=\(MemoryLayout.size(ofValue: model))")
-        print("alignment=\(MemoryLayout.alignment(ofValue: model))")
-        print("stride=\(MemoryLayout.stride(ofValue: model))")
+//        let jsonStruct = JsonStruct.deserialize(from: jsonDic)
+//        print(jsonStruct)
         
         
-        var mpointer = PowerPointerHelp.headPointer(object: &model)
-        mpointer = mpointer.setOffset(16)
-        PowerPointerHelp.bindMemory(headPointer: mpointer, type: type(of: model.name)).pointee = "wo shi name"
-        mpointer = mpointer.setOffset(MemoryLayout.stride(ofValue: model.name))
-        PowerPointerHelp.bindMemory(headPointer: mpointer, type: type(of: model.title)).pointee = "wo shi title?"
+//        var my_i: FixedWidthInteger?
+//        var my_j: SignedInteger?
         
-        var s_model = JsonStruct()
-        var pointer = PowerPointerHelp.headPointer(object: &s_model)
-        PowerPointerHelp.bindMemory(headPointer: pointer, type: type(of: s_model.a)).pointee = 10000
-        pointer = pointer.setOffset(MemoryLayout.stride(ofValue: s_model.a))
-        PowerPointerHelp.bindMemory(headPointer: pointer, type: type(of: s_model.b)).pointee = "adasdadasdadasdadsasdad"
-        pointer = pointer.setOffset(MemoryLayout.stride(ofValue: s_model.a) + MemoryLayout.stride(ofValue: s_model.b))
-//        PowerPointerHelp.bindMemory(headPointer: pointer, type: type(of: s_model.c)).pointee = "wo shi ccccccccccc"
-        
-//        PowerPointerHelp.bindValue(object: &model.name, value: "jjj")
-//        PowerPointerHelp.bindValue(object: &model.title, value: "-=-")
-//        PowerPointerHelp.bindValue(object: &s_model.f, value: (10, "000"))
-//        PowerPointerHelp.bindValue(object: &s_model.g, value: 100)
-//        PowerPointerHelp.bindValue(object: &s_model.i, value: ["11":22])
-//        PowerPointerHelp.bindValue(object: &s_model.j, value: CGSize(width: 100, height: 400))
-//        PowerPointerHelp.bindValue(object: &s_model.c, value: "oc_s")
-        
-//        let pointer = PowerPointerHelp.headPointer(object: &model.a)
-//        let a_p = UnsafeMutableRawPointer(pointer).bindMemory(to: Int.self, capacity: 1)
-//                    a_p.pointee = 101
-        
-//        withUnsafeMutablePointer(to: &model) { (pointer: UnsafeMutablePointer<JsonStruct>) in
-//            let a_p = UnsafeMutableRawPointer(pointer).bindMemory(to: Int.self, capacity: 1)
-//            a_p.pointee = 101
+//        var my_int: Int = 10
+//        var my_int8: Int8 = 8
+//        var my_int16: Int16 = 16
+//        var my_int64: Int64 = 64
 //
-//            UnsafeMutableRawPointer(a_p.advanced(by: MemoryLayout.stride(ofValue: a_p.pointee))).bindMemory(to: String.self, capacity: 1).pointee = "xyz"
-//        }
-        print("name=\(model.name)")
-        print("title=\(model.title)")
-        print("a=\(s_model.a)")
-        print("f=\(s_model.f)")
-        print("g=\(s_model.g)")
-        print("h=\(s_model.h)")
-        print("i=\(s_model.i)")
-        print("j=\(s_model.j)")
-        print("c=\(s_model.c)")
-        print("b=\(s_model.b)")
+//
+//
+//        print(my_int.bitWidth)
+//        print(my_int8.bitWidth)
+//        print(my_int16.bitWidth)
+//        print(my_int64.bitWidth)
+//
+//        print(MemoryLayout<Int>.stride)
+//        print(MemoryLayout<Int8>.stride)
+//        print(MemoryLayout<Int16>.stride)
+//        print(MemoryLayout<Int64>.stride)
         
-        print(PowerPointerHelp.isOCObject(object: s_model.c))
-        print(PowerPointerHelp.isOCObject(object: s_model.a))
-        print(PowerPointerHelp.isOCObject(object: model.dic))
-        print(PowerPointerHelp.isOCObject(object: s_model.g))
-        print(PowerPointerHelp.isOCObject(object: s_model.h))
-        print(PowerPointerHelp.isOCObject(object: s_model.j))
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
+        let left = UIBarButtonItem.init(title: "test", style: .done, target: self, action: #selector(actionForTest))
+        navigationItem.rightBarButtonItem = left
         
-//        let oc_str: NSString = "oc_str"
-//        let type_oc_str = type(of: String(oc_str))
-//        print(type_oc_str)
     }
 
+    @objc func actionForTest() {
+        let vc = PointerTestViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 

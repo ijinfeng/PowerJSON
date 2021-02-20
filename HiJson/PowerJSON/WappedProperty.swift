@@ -13,17 +13,12 @@ struct WappedProperty {
     var value: Any
     var displayStyle: WappedMirror.DisplayStyle
     var objectType: Any.Type
-    var stride: Int
-    var offset: Int
     
     init(child: Mirror.Child) {
         name = child.label ?? ""
         value = child.value
         let mirror = Mirror(reflecting: value)
-        displayStyle = WappedMirror.transferDisplayStyle(from: mirror.displayStyle)
         objectType = mirror.subjectType
-        stride = MemoryLayout.stride(ofValue: value)
-        offset = stride
-        print("property style=\(displayStyle), type=\(mirror.subjectType), value=\(value)")
+        displayStyle = WappedMirror.transferDisplayStyle(from: mirror.displayStyle)
     }
 }

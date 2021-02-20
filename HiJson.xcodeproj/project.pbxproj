@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37610D8625B47D64003197DC /* WappedMirror.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37610D8525B47D64003197DC /* WappedMirror.swift */; };
-		37610D8825B48623003197DC /* PowerPointerHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37610D8725B48623003197DC /* PowerPointerHelp.swift */; };
 		37631DCB25BC2392000BB213 /* PowerWapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37631DCA25BC2392000BB213 /* PowerWapped.swift */; };
-		3765386825BB1A0C009BA0AC /* Meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765386725BB1A0C009BA0AC /* Meta.swift */; };
 		3765386A25BB1B7D009BA0AC /* PowerJSONImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3765386925BB1B7D009BA0AC /* PowerJSONImpl.swift */; };
 		3768F84F25B1DC1D0067CF27 /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3768F84E25B1DC1D0067CF27 /* Transfer.swift */; };
 		3768F85125B1E0450067CF27 /* JSONSerialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3768F85025B1E0450067CF27 /* JSONSerialize.swift */; };
@@ -24,6 +22,10 @@
 		37FCC61425AF342100F1221B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37FCC61225AF342100F1221B /* LaunchScreen.storyboard */; };
 		37FCC61D25AF348100F1221B /* PowerJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCC61C25AF348100F1221B /* PowerJSON.swift */; };
 		37FCC61F25AF34DB00F1221B /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FCC61E25AF34DB00F1221B /* JsonModel.swift */; };
+		782DD5B925C25C580057BDBB /* UserConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DD5B825C25C580057BDBB /* UserConfiguration.swift */; };
+		782DD5BC25C299A40057BDBB /* PowerPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782DD5BB25C299A40057BDBB /* PowerPointer.swift */; };
+		784AC0E025CA80C900F94F13 /* TypeTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784AC0DF25CA80C900F94F13 /* TypeTransfer.swift */; };
+		7885BD2425C7B21300F2A528 /* PointerTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7885BD2325C7B21300F2A528 /* PointerTestViewController.swift */; };
 		79AC01CA50C570F3749AD5C0 /* Pods_HiJson.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277B084463555DEACCD1A0A6 /* Pods_HiJson.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,9 +33,7 @@
 		04DA5F4D29A699062418D4A0 /* Pods-HiJson.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiJson.release.xcconfig"; path = "Pods/Target Support Files/Pods-HiJson/Pods-HiJson.release.xcconfig"; sourceTree = "<group>"; };
 		277B084463555DEACCD1A0A6 /* Pods_HiJson.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HiJson.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37610D8525B47D64003197DC /* WappedMirror.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WappedMirror.swift; sourceTree = "<group>"; };
-		37610D8725B48623003197DC /* PowerPointerHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerPointerHelp.swift; sourceTree = "<group>"; };
 		37631DCA25BC2392000BB213 /* PowerWapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerWapped.swift; sourceTree = "<group>"; };
-		3765386725BB1A0C009BA0AC /* Meta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meta.swift; sourceTree = "<group>"; };
 		3765386925BB1B7D009BA0AC /* PowerJSONImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerJSONImpl.swift; sourceTree = "<group>"; };
 		3768F84E25B1DC1D0067CF27 /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		3768F85025B1E0450067CF27 /* JSONSerialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerialize.swift; sourceTree = "<group>"; };
@@ -49,6 +49,10 @@
 		37FCC61525AF342100F1221B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37FCC61C25AF348100F1221B /* PowerJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerJSON.swift; sourceTree = "<group>"; };
 		37FCC61E25AF34DB00F1221B /* JsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
+		782DD5B825C25C580057BDBB /* UserConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfiguration.swift; sourceTree = "<group>"; };
+		782DD5BB25C299A40057BDBB /* PowerPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerPointer.swift; sourceTree = "<group>"; };
+		784AC0DF25CA80C900F94F13 /* TypeTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTransfer.swift; sourceTree = "<group>"; };
+		7885BD2325C7B21300F2A528 /* PointerTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointerTestViewController.swift; sourceTree = "<group>"; };
 		908740F78B6CC1644BAC8A4A /* Pods-HiJson.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HiJson.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HiJson/Pods-HiJson.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +100,7 @@
 				37FCC60725AF342000F1221B /* AppDelegate.swift */,
 				37FCC60925AF342000F1221B /* SceneDelegate.swift */,
 				37FCC60B25AF342000F1221B /* ViewController.swift */,
+				7885BD2325C7B21300F2A528 /* PointerTestViewController.swift */,
 				37FCC61E25AF34DB00F1221B /* JsonModel.swift */,
 				37FCC61B25AF346D00F1221B /* PowerJSON */,
 				37FCC60D25AF342000F1221B /* Main.storyboard */,
@@ -112,13 +117,14 @@
 				37FCC61C25AF348100F1221B /* PowerJSON.swift */,
 				3765386925BB1B7D009BA0AC /* PowerJSONImpl.swift */,
 				3768F84E25B1DC1D0067CF27 /* Transfer.swift */,
-				3765386725BB1A0C009BA0AC /* Meta.swift */,
+				782DD5B825C25C580057BDBB /* UserConfiguration.swift */,
+				782DD5BB25C299A40057BDBB /* PowerPointer.swift */,
 				3768F85025B1E0450067CF27 /* JSONSerialize.swift */,
 				3768F85225B1E41A0067CF27 /* WappedObject.swift */,
 				37631DCA25BC2392000BB213 /* PowerWapped.swift */,
 				3768F85425B1E43D0067CF27 /* WappedProperty.swift */,
 				37610D8525B47D64003197DC /* WappedMirror.swift */,
-				37610D8725B48623003197DC /* PowerPointerHelp.swift */,
+				784AC0DF25CA80C900F94F13 /* TypeTransfer.swift */,
 			);
 			path = PowerJSON;
 			sourceTree = "<group>";
@@ -259,16 +265,18 @@
 				3768F85125B1E0450067CF27 /* JSONSerialize.swift in Sources */,
 				37631DCB25BC2392000BB213 /* PowerWapped.swift in Sources */,
 				37FCC60C25AF342000F1221B /* ViewController.swift in Sources */,
-				37610D8825B48623003197DC /* PowerPointerHelp.swift in Sources */,
 				37FCC60825AF342000F1221B /* AppDelegate.swift in Sources */,
 				37FCC61D25AF348100F1221B /* PowerJSON.swift in Sources */,
 				37610D8625B47D64003197DC /* WappedMirror.swift in Sources */,
 				3768F85525B1E43D0067CF27 /* WappedProperty.swift in Sources */,
-				3765386825BB1A0C009BA0AC /* Meta.swift in Sources */,
 				3768F85325B1E41A0067CF27 /* WappedObject.swift in Sources */,
+				7885BD2425C7B21300F2A528 /* PointerTestViewController.swift in Sources */,
+				782DD5BC25C299A40057BDBB /* PowerPointer.swift in Sources */,
 				3768F84F25B1DC1D0067CF27 /* Transfer.swift in Sources */,
+				782DD5B925C25C580057BDBB /* UserConfiguration.swift in Sources */,
 				37FCC60A25AF342000F1221B /* SceneDelegate.swift in Sources */,
 				3765386A25BB1B7D009BA0AC /* PowerJSONImpl.swift in Sources */,
+				784AC0E025CA80C900F94F13 /* TypeTransfer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
